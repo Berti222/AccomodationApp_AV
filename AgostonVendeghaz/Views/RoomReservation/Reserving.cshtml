@@ -1,0 +1,31 @@
+﻿@model AgostonVendeghaz.Models.ReserveRoom
+
+@{
+    ViewBag.Title = "Reserving";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Reserving</h2>
+
+@using (Html.BeginForm("ReserveRoom", "RoomReservation"))
+{
+    <div>
+        @Html.LabelFor(r => r.NumberOfPeople)
+        @Html.DropDownListFor(r => r.NumberOfPeople, new SelectList(new List<int> { 1, 2, 3, 4, 5 }))
+    </div>
+
+    <div>
+        @Html.LabelFor(r => r.CheckIn)
+        @Html.TextBoxFor(r => r.CheckIn, "{0:yyyy MMM d}", new { @class = "form-control" })
+    </div>
+
+    <div>
+        @Html.LabelFor(r => r.CheckOut)
+        @Html.TextBoxFor(r => r.CheckOut, "{0:yyyy MMM d}", new { @class = "form-control" })
+    </div>
+
+    @Html.HiddenFor(r => r.RoomId)
+    @Html.AntiForgeryToken()
+
+    <button type="submit" class="btn btn-primary">Foglalás</button>
+}

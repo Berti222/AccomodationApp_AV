@@ -1,0 +1,31 @@
+﻿@model IEnumerable<AgostonVendeghaz.Models.Room>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Index</h2>
+
+            @foreach (var room in Model)
+            {
+                <div class="card" style="width: 18rem; display:inline-block">
+                    <img src="~/img/hotel-1979406_640.jpg" class="card-img-top" alt="szoba">
+                    <div class="card-body">
+                        <h5 class="card-title">@room.Type</h5>
+                        <p class="card-text">@room.Description</p>
+                        <hr />
+                        <ul>
+                            <li>Szoba @room.GuestFittingInTheRoom Férőhelyes</li>
+                            <li>Elérhető szobák: @room.Available DB</li>
+                        </ul>
+                        @Html.ActionLink("Szoba foglalása", "Reserving", "RoomReservation",new { id = room.Id},new { @class = "btn btn-primary"})
+                        
+                    </div>
+                </div>                
+            }
+        </div>
+    </div>
+</div>
+
