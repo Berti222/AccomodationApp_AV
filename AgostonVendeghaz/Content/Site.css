@@ -6,3 +6,22 @@
 .mainPictures {
     max-height: 600px;
 }
+
+.room-card{
+    background-color: antiquewhite;
+}
+#rooms-bg {
+    background-image: url("../img/bg/people-2593251_1920.jpg");
+    background-color: rgba(0, 0, 0, 0.5);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 0;
+    padding:60px 0;
+}
+
+footer{
+    background-color:silver;
+    padding:50px;
+    border-top: 1px solid black;
+}

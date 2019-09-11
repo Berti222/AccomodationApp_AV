@@ -3,18 +3,19 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div id="rooms-bg">
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <h2>Index</h2>
+        <div class="col-md-12 text-center">
+            <h2 class="text-light">Szobák</h2>
 
             @foreach (var room in Model)
             {
-                <div class="card" style="width: 18rem; display:inline-block">
+                <div class="card mr-5 mt-2 mb-2" style="width: 18rem; display:inline-block; border-color:ghostwhite;">
                     <img src="~/img/hotel-1979406_640.jpg" class="card-img-top" alt="szoba">
-                    <div class="card-body">
+                    <div class="card-body room-card">
                         <h5 class="card-title">@room.Type</h5>
-                        <p class="card-text">@room.Description</p>
+                        <p class="card-text text-left">@room.Description</p>
                         <hr />
                         <ul>
                             <li>Szoba @room.GuestFittingInTheRoom Férőhelyes</li>
@@ -27,5 +28,6 @@
             }
         </div>
     </div>
+</div>
 </div>
 
