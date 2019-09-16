@@ -45,7 +45,7 @@ namespace AgostonVendeghaz.Models
 
         private static int ExtraBed(ReservedRooms reserve)
         {
-            int extraBed = reserve.NumberOfPeople - 2 > 0 ? reserve.NumberOfPeople - 2 : 0;
+            int extraBed = reserve.NumberOfPeople > 2 ? reserve.NumberOfPeople - 2 : 0;
             return extraBed;
         }
 
@@ -57,33 +57,29 @@ namespace AgostonVendeghaz.Models
             return result;
         }
 
+        private static int RoomPriceWithoutDiscount(ReservedRooms reserve, UnitPrices unitPrice)
+        {
+            int nights = CalculateMethods.Nights(reserve);
+            int price = nights * unitPrice.RoomPrice;
+
+            int extraBedPricesFroOneNight = CalculateMethods.ExtraBedPrice(reserve, unitPrice);
+            int extraBedPrices = extraBedPricesFroOneNight * nights;
+
+            int result = price + extraBedPrices;
+
+            return result;
+        }
+
         private static int DiscountPrice(ReservedRooms reserve, UnitPrices unitPrice)
         {
             int nights = CalculateMethods.Nights(reserve);
-            int extraBedPriceForOneNight = CalculateMethods.ExtraBedPrice(reserve, unitPrice);
-            int extraBedPrice = nights * extraBedPriceForOneNight;
-
-            int priceWithoutExtraBed = nights * unitPrice.RoomPrice;
-            int price = priceWithoutExtraBed + extraBedPrice;
+            int price = RoomPriceWithoutDiscount(reserve, unitPrice);
 
             double priceWithDiscountDouble = price * unitPrice.Discount;
             int priceWithDiscount = (int)Math.Round(priceWithDiscountDouble);           
 
             int result = (nights >= unitPrice.DiscountFromDay) ?
-                                priceWithDiscount : price;
-
-            return result;
-        }
-
-        private static int RoomPriceWithoutDiscount(ReservedRooms reserve, UnitPrices unitPrice)
-        {
-            int nights = CalculateMethods.Nights(reserve);
-            double priceDouble = nights * unitPrice.RoomPrice;          
-            int price = (int)Math.Round(priceDouble);
-
-            int extraBedPrices = CalculateMethods.ExtraBedPrice(reserve, unitPrice);
-
-            int result = price + extraBedPrices;
+                                priceWithDiscount : 0;
 
             return result;
         }
