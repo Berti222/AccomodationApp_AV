@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -21,5 +22,9 @@ namespace AgostonVendeghaz.Models
 
         public int ExtraBed { get; set; }
         public int ExtraBedPrice { get; set; }
+
+        public DateTime ReservedAt { get; set; }
+        [Required]
+        public string UserId { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace AgostonVendeghaz.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Room> Rooms { get; set; }
-        public DbSet<ReserveRoom> ReserveRooms { get; set; }
+        public DbSet<ReservedRooms> ReserveRooms { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<UnitPrices> UnitPrice { get; set; }
 

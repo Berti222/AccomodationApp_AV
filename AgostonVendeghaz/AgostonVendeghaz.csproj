@@ -243,13 +243,33 @@
     <Compile Include="Migrations\201909101328491_AddReserveRoom.Designer.cs">
       <DependentUpon>201909101328491_AddReserveRoom.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909130548502_ReserveRoomTableRenamedToReservedRooms.cs" />
+    <Compile Include="Migrations\201909130548502_ReserveRoomTableRenamedToReservedRooms.Designer.cs">
+      <DependentUpon>201909130548502_ReserveRoomTableRenamedToReservedRooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130708101_AddUserDataToReservedRooms.cs" />
+    <Compile Include="Migrations\201909130708101_AddUserDataToReservedRooms.Designer.cs">
+      <DependentUpon>201909130708101_AddUserDataToReservedRooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909130711182_NullableInvoiceIdFromReservedRooms.cs" />
+    <Compile Include="Migrations\201909130711182_NullableInvoiceIdFromReservedRooms.Designer.cs">
+      <DependentUpon>201909130711182_NullableInvoiceIdFromReservedRooms.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909161735536_InvoiceReservedAtAndUserIdAdded.cs" />
+    <Compile Include="Migrations\201909161735536_InvoiceReservedAtAndUserIdAdded.Designer.cs">
+      <DependentUpon>201909161735536_InvoiceReservedAtAndUserIdAdded.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201909161810262_ReservedRoomsInvoice.cs" />
+    <Compile Include="Migrations\201909161810262_ReservedRoomsInvoice.Designer.cs">
+      <DependentUpon>201909161810262_ReservedRoomsInvoice.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalculateMethods.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\ReserveRoom.cs" />
+    <Compile Include="Models\ReservedRooms.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Room.cs" />
     <Compile Include="Models\UnitPrices.cs" />
@@ -407,6 +427,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909101328491_AddReserveRoom.resx">
       <DependentUpon>201909101328491_AddReserveRoom.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130548502_ReserveRoomTableRenamedToReservedRooms.resx">
+      <DependentUpon>201909130548502_ReserveRoomTableRenamedToReservedRooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130708101_AddUserDataToReservedRooms.resx">
+      <DependentUpon>201909130708101_AddUserDataToReservedRooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909130711182_NullableInvoiceIdFromReservedRooms.resx">
+      <DependentUpon>201909130711182_NullableInvoiceIdFromReservedRooms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909161735536_InvoiceReservedAtAndUserIdAdded.resx">
+      <DependentUpon>201909161735536_InvoiceReservedAtAndUserIdAdded.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909161810262_ReservedRoomsInvoice.resx">
+      <DependentUpon>201909161810262_ReservedRoomsInvoice.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

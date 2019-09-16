@@ -1,31 +1,74 @@
-﻿@model AgostonVendeghaz.Models.ReserveRoom
+﻿@model AgostonVendeghaz.Models.ReservedRooms
 
 @{
     ViewBag.Title = "Reserving";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-8 m-5" style="background-color:aliceblue">
+                <h2 class="text-center text-white p-3" style="background-color:darkblue; border-radius:10px;">Reserving</h2>
 
-<h2>Reserving</h2>
+                @using (Html.BeginForm("ReserveRoom", "RoomReservation"))
+                {
+                    <h3 class="display-4 text-center"><i class="fas fa-address-card"></i></h3>
+                    <div>
+                        @Html.LabelFor(r => r.Name)
+                        @Html.TextBoxFor(r => r.Name, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(r => r.ZipCode)
+                        @Html.TextBoxFor(r => r.ZipCode, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(r => r.City)
+                        @Html.TextBoxFor(r => r.City, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(r => r.Street)
+                        @Html.TextBoxFor(r => r.Street, new { @class = "form-control" })
+                    </div>
+                    <div>
+                        @Html.LabelFor(r => r.HouseNumber)
+                        @Html.TextBoxFor(r => r.HouseNumber, new { @class = "form-control" })
+                    </div>
+                    <h3 class="display-4 text-center"><i class="fas fa-phone-square-alt"></i></h3>
+                    <div>
+                        @Html.LabelFor(r => r.PhoneNumber)
+                        @Html.TextBoxFor(r => r.PhoneNumber, new { @class = "form-control" })
+                    </div>
+                    <h3 class="display-4 text-center"><i class="fas fa-at"></i></h3>
+                    <div>
+                        @Html.LabelFor(r => r.Email)
+                        @Html.LabelFor(r => r.Email, new { @class = "form-control" })
+                    </div>
+                    <h3 class="display-4 text-center"><i class="fas fa-users"></i></h3>
+                    <div>
+                        @Html.LabelFor(r => r.NumberOfPeople)
+                        @Html.DropDownListFor(r => r.NumberOfPeople, new SelectList(new List<int> { 1, 2, 3, 4, 5 }))
+                    </div>
+                    <h3 class="display-4 text-center"><i class="far fa-calendar-alt"></i></h3>
+                    <div>
+                        @Html.LabelFor(r => r.CheckIn)
+                        @Html.TextBoxFor(r => r.CheckIn, "{0:yyyy MMM d}", new { @class = "form-control" })
+                    </div>
 
-@using (Html.BeginForm("ReserveRoom", "RoomReservation"))
-{
-    <div>
-        @Html.LabelFor(r => r.NumberOfPeople)
-        @Html.DropDownListFor(r => r.NumberOfPeople, new SelectList(new List<int> { 1, 2, 3, 4, 5 }))
+                    <div>
+                        @Html.LabelFor(r => r.CheckOut)
+                        @Html.TextBoxFor(r => r.CheckOut, "{0:yyyy MMM d}", new { @class = "form-control" })
+                    </div>
+
+                    @Html.HiddenFor(r => r.RoomId)
+                    @Html.AntiForgeryToken()
+                    <div class="text-center p-4">
+                        <button type="submit" class="btn btn-primary">Foglalás</button>
+                    </div>
+                }
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
     </div>
+</div>
 
-    <div>
-        @Html.LabelFor(r => r.CheckIn)
-        @Html.TextBoxFor(r => r.CheckIn, "{0:yyyy MMM d}", new { @class = "form-control" })
-    </div>
-
-    <div>
-        @Html.LabelFor(r => r.CheckOut)
-        @Html.TextBoxFor(r => r.CheckOut, "{0:yyyy MMM d}", new { @class = "form-control" })
-    </div>
-
-    @Html.HiddenFor(r => r.RoomId)
-    @Html.AntiForgeryToken()
-
-    <button type="submit" class="btn btn-primary">Foglalás</button>
-}
