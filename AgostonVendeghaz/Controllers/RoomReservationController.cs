@@ -42,6 +42,7 @@ namespace AgostonVendeghaz.Controllers
         }
 
         [Authorize]
+        [HttpPost]
         public ActionResult ReserveRoom(ReservedRooms reserved)
         {
             // Set DateTime - ReservedAt
@@ -49,20 +50,29 @@ namespace AgostonVendeghaz.Controllers
             // Set UserId
             reserved.UserId = User.Identity.GetUserId();
 
-            var invoice = CalculateMethods.CalculateInvoice(reserved);
-            _context.Invoices.Add(invoice);
-            _context.SaveChanges();
+            SaveInvoice(reserved);
 
-            var invoiceInDb = _context
+            var userInvoices = _context
                             .Invoices
-                            .Where(x => x.UserId == reserved.UserId 
-                            && x.ReservedAt == reserved.ReservedAt)
-                            .SingleOrDefault();
+                            .Where(x => x.UserId == reserved.UserId)
+                            .ToList();
+
+            var invoiceInDb = userInvoices
+                            .SingleOrDefault
+                            (x =>x.ReservedAt.ToString() == reserved.ReservedAt.ToString());
+                            
             reserved.InvoiceId = invoiceInDb.Id;
 
             _context.ReserveRooms.Add(reserved);
             _context.SaveChanges();
             return View();
+        }
+
+        private void SaveInvoice(ReservedRooms reserved)
+        {
+            var invoice = CalculateMethods.CalculateInvoice(reserved);
+            _context.Invoices.Add(invoice);
+            _context.SaveChanges();
         }
     }
 }
