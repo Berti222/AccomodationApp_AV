@@ -60,11 +60,14 @@ namespace AgostonVendeghaz.Models
         private static int DiscountPrice(ReservedRooms reserve, UnitPrices unitPrice)
         {
             int nights = CalculateMethods.Nights(reserve);
-            int extraBedPrice = CalculateMethods.ExtraBedPrice(reserve, unitPrice);
-            double priceDouble = nights * unitPrice.RoomPrice;
-            double priceWithDiscountDouble = priceDouble * unitPrice.Discount;
-            int priceWithDiscount = (int)Math.Round(priceWithDiscountDouble);
-            int price = (int)Math.Round(priceDouble);
+            int extraBedPriceForOneNight = CalculateMethods.ExtraBedPrice(reserve, unitPrice);
+            int extraBedPrice = nights * extraBedPriceForOneNight;
+
+            int priceWithoutExtraBed = nights * unitPrice.RoomPrice;
+            int price = priceWithoutExtraBed + extraBedPrice;
+
+            double priceWithDiscountDouble = price * unitPrice.Discount;
+            int priceWithDiscount = (int)Math.Round(priceWithDiscountDouble);           
 
             int result = (nights >= unitPrice.DiscountFromDay) ?
                                 priceWithDiscount : price;
