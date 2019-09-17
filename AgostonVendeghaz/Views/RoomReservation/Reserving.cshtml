@@ -59,15 +59,16 @@
                     <h3 class="display-4 text-center"><i class="far fa-calendar-alt"></i></h3>
                     <div>
                         @Html.LabelFor(r => r.CheckIn)
-                        @Html.TextBoxFor(r => r.CheckIn, "{0:yyyy MMM d}", new { @class = "form-control" })
+                        @Html.TextBoxFor(r => r.CheckIn, new { @class = "form-control", @type="date" })
                         @Html.ValidationMessageFor(r => r.CheckIn)
                     </div>
 
                     <div>
                         @Html.LabelFor(r => r.CheckOut)
-                        @Html.TextBoxFor(r => r.CheckOut, "{0:yyyy MMM d}", new { @class = "form-control" })
+                        @Html.TextBoxFor(r => r.CheckOut, new { @class = "form-control", @type="date" })
                         @Html.ValidationMessageFor(r => r.CheckOut)
                     </div>
+                 
 
                     @Html.HiddenFor(r => r.RoomId)
                     @Html.AntiForgeryToken()

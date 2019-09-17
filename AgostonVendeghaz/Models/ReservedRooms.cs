@@ -27,28 +27,28 @@ namespace AgostonVendeghaz.Models
         [Required]
         [Display(Name = "Város")]
         [StringLength(100)]
-        [RegularExpression(@"^[A-Za-z-. ]{2,}$",
+        [RegularExpression(@"^[a-zA-Z\u00C0-\u00FFűőŰŐ .\-]{2,}$",
             ErrorMessage ="Helytelen formátum! Kérem próbálja újra.")]
         public string City { get; set; }
 
         [Required]
         [Display(Name ="Utca")]
         [StringLength(255)]
-        [RegularExpression(@"^[A-Za-z-. ]{2,}$",
+        [RegularExpression(@"^[a-zA-Z\u00C0-\u00FFűőŰŐ \-.]{2,}$",
             ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string Street { get; set; }
 
         [Required]
         [Display(Name ="Házszám")]
         [StringLength(50)]
-        [RegularExpression(@"^\d{1,4}[.-/ ]?[A-Za-z .-/:]*?$",
+        [RegularExpression(@"^\d{1,4}[.\-/ ]?[A-Za-z .\-/:]*?$",
             ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string HouseNumber { get; set; }
 
         //Phone
         [Required]
         [Display(Name ="Telefonszám")]
-        [RegularExpression(@"^\+?\d{2}[-. ]?\d{1,2}[-. ]?\d{3}[-. ]?\d{3,4}$",
+        [RegularExpression(@"^\+?\d{2}[\-. ]?\d{1,2}[\-. ]?\d{3}[\-. ]?\d{3,4}$",
             ErrorMessage = "Helytelen formátum kérem próbálja újra!")]
         public string PhoneNumber { get; set; }
 
@@ -62,6 +62,7 @@ namespace AgostonVendeghaz.Models
         public DateTime ReservedAt { get; set; }
 
         [Display(Name ="Érkezés napja")]
+        [CheckInDateTimeValidator]
         public DateTime CheckIn { get; set; }
 
         [Display(Name ="Távozás napja")]

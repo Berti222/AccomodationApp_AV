@@ -33,16 +33,15 @@ namespace AgostonVendeghaz.Controllers
         {
             var reserving = new ReservedRooms()
             {
-                RoomId = id,
-                CheckIn = DateTime.Now,
-                CheckOut = DateTime.Now                            
+                RoomId = id                                     
             };
 
             return View(reserving);
         }
 
-        [Authorize]
         [HttpPost]
+        [Authorize]
+        [ValidateAntiForgeryToken]
         public ActionResult ReserveRoom(ReservedRooms reserved)
         {
             // Set DateTime - ReservedAt

@@ -269,6 +269,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\CheckInDateTimeValidator.cs" />
     <Compile Include="Models\ReservedRooms.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Room.cs" />
