@@ -25,3 +25,7 @@ footer{
     padding:50px;
     border-top: 1px solid black;
 }
+
+.field-validation-error{
+    color: red;
+}

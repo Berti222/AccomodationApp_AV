@@ -17,32 +17,39 @@
                     <div>
                         @Html.LabelFor(r => r.Name)
                         @Html.TextBoxFor(r => r.Name, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.Name)
                     </div>
                     <div>
                         @Html.LabelFor(r => r.ZipCode)
                         @Html.TextBoxFor(r => r.ZipCode, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.ZipCode)
                     </div>
                     <div>
                         @Html.LabelFor(r => r.City)
                         @Html.TextBoxFor(r => r.City, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.City)
                     </div>
                     <div>
                         @Html.LabelFor(r => r.Street)
                         @Html.TextBoxFor(r => r.Street, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.Street)
                     </div>
                     <div>
                         @Html.LabelFor(r => r.HouseNumber)
                         @Html.TextBoxFor(r => r.HouseNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.HouseNumber)
                     </div>
                     <h3 class="display-4 text-center"><i class="fas fa-phone-square-alt"></i></h3>
                     <div>
                         @Html.LabelFor(r => r.PhoneNumber)
                         @Html.TextBoxFor(r => r.PhoneNumber, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.PhoneNumber)
                     </div>
                     <h3 class="display-4 text-center"><i class="fas fa-at"></i></h3>
                     <div>
                         @Html.LabelFor(r => r.Email)
-                        @Html.LabelFor(r => r.Email, new { @class = "form-control" })
+                        @Html.TextBoxFor(r => r.Email, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.Email)
                     </div>
                     <h3 class="display-4 text-center"><i class="fas fa-users"></i></h3>
                     <div>
@@ -53,11 +60,13 @@
                     <div>
                         @Html.LabelFor(r => r.CheckIn)
                         @Html.TextBoxFor(r => r.CheckIn, "{0:yyyy MMM d}", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.CheckIn)
                     </div>
 
                     <div>
                         @Html.LabelFor(r => r.CheckOut)
                         @Html.TextBoxFor(r => r.CheckOut, "{0:yyyy MMM d}", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(r => r.CheckOut)
                     </div>
 
                     @Html.HiddenFor(r => r.RoomId)
@@ -72,3 +81,6 @@
     </div>
 </div>
 
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")    
+}

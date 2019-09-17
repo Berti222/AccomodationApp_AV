@@ -14,46 +14,46 @@ namespace AgostonVendeghaz.Models
 
         //Address
         [Required]
-        [Display(Name = "Név: ")]
+        [Display(Name = "Név")]
         public string Name { get; set; }
 
         [Required]
-        [Display(Name = "Irányítószám: ")]
+        [Display(Name = "Irányítószám")]
         [RegularExpression(@"^[1-9]\d{3}[.]?$",
             ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         [StringLength(5)]
         public string ZipCode { get; set; }
 
         [Required]
-        [Display(Name = "Város: ")]
+        [Display(Name = "Város")]
         [StringLength(100)]
-        [RegularExpression(@"^([A-Za-z-. ]){2,}$",
+        [RegularExpression(@"^[A-Za-z-. ]{2,}$",
             ErrorMessage ="Helytelen formátum! Kérem próbálja újra.")]
         public string City { get; set; }
 
         [Required]
-        [Display(Name ="Utca: ")]
+        [Display(Name ="Utca")]
         [StringLength(255)]
         [RegularExpression(@"^[A-Za-z-. ]{2,}$",
             ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string Street { get; set; }
 
         [Required]
-        [Display(Name ="Házszám: ")]
+        [Display(Name ="Házszám")]
         [StringLength(50)]
-        [RegularExpression(@"^\d{1,4}[.-/ ]?[A-Za-z .-/:]*$",
+        [RegularExpression(@"^\d{1,4}[.-/ ]?[A-Za-z .-/:]*?$",
             ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string HouseNumber { get; set; }
 
         //Phone
         [Required]
-        [Display(Name ="Telefonszám: ")]
+        [Display(Name ="Telefonszám")]
         [RegularExpression(@"^\+?\d{2}[-. ]?\d{1,2}[-. ]?\d{3}[-. ]?\d{3,4}$",
             ErrorMessage = "Helytelen formátum kérem próbálja újra!")]
         public string PhoneNumber { get; set; }
 
         //E-mail
-        [Display(Name = "E-mail cím:")]
+        [Display(Name = "E-mail cím")]
         [EmailAddress]
         public string Email { get; set; }
 
@@ -61,13 +61,13 @@ namespace AgostonVendeghaz.Models
 
         public DateTime ReservedAt { get; set; }
 
-        [Display(Name ="Érkezés napja: ")]
+        [Display(Name ="Érkezés napja")]
         public DateTime CheckIn { get; set; }
 
-        [Display(Name ="Távozás napja: ")]
+        [Display(Name ="Távozás napja")]
         public DateTime CheckOut { get; set; }
 
-        [Display(Name ="Érkező vendégek száma: ")]
+        [Display(Name ="Érkező vendégek száma")]
 
         public int NumberOfPeople { get; set; }
         
