@@ -30,7 +30,7 @@ namespace AgostonVendeghaz.Models
             // Reserved At
             invoice.ReservedAt = reserve.ReservedAt;
 
-            invoice.DiscountPercent = (int)(unitPrices.Discount * 100);
+            invoice.DiscountPercent = DiscountPercent(reserve,unitPrices);
 
             return invoice;
         }
@@ -90,6 +90,13 @@ namespace AgostonVendeghaz.Models
             int discountPrice = CalculateMethods.DiscountPrice(reserve, unitPrice);
 
             return roomPriceWithoutDiscount - discountPrice;
+        }
+
+        private static int DiscountPercent(ReservedRooms reserve, UnitPrices unitPrice)
+        {
+            bool haveDiscount = CalculateMethods.Nights(reserve) >= unitPrice.DiscountFromDay;
+            int discount = (int)(unitPrice.Discount * 100);
+            return haveDiscount ? discount : 0;
         }
     }
 }

@@ -379,6 +379,7 @@
     <Content Include="Views\Room\Index.cshtml" />
     <Content Include="Views\RoomReservation\Index.cshtml" />
     <Content Include="Views\RoomReservation\Reserving.cshtml" />
+    <Content Include="Views\RoomReservation\ShowInvoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

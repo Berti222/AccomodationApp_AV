@@ -1,0 +1,106 @@
+﻿@model AgostonVendeghaz.Models.ReservedRooms
+
+@{
+    ViewBag.Title = "ShowInvoice";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h2 class="display-2 text-center">Számla</h2>
+            <p class="bg-success text-white h3 p-3">Köszönjük foglalását!</p>
+        </div>
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body p-0">
+                    <div class="row p-5">
+                        <div class="col-md-6">
+                            <img src="http://via.placeholder.com/400x90?text=logo">
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <p class="font-weight-bold mb-1">Számla: #@Html.DisplayFor(x => x.Id)</p>
+                            <p class="text-muted">Kiállítás dátuma: @Html.DisplayFor(model => model.ReservedAt)</p>
+                        </div>
+                    </div>
+                    <hr class="my-5">
+                    <div class="row pb-5 p-5">
+                        <div class="col-md-6">
+                            <p class="font-weight-bold mb-4">Client Information</p>
+                            <p class="mb-1">@Html.DisplayFor(model => model.Name)</p>
+                            <p>Cím:</p>
+                            <p class="mb-1">@Html.DisplayFor(model => model.ZipCode) @Html.DisplayFor(model => model.City)</p>
+                            <p class="mb-1">@Html.DisplayFor(model => model.Street)  @Html.DisplayFor(model => model.HouseNumber)</p>
+                        </div>
+                        <div class="col-md-6 text-right">
+                            <p class="font-weight-bold mb-4">Payment Details</p>
+                            <p class="mb-1"><span class="text-muted">VAT: </span> 1425782</p>
+                            <p class="mb-1"><span class="text-muted">VAT ID: </span> 10253642</p>
+                            <p class="mb-1"><span class="text-muted">Payment Type: </span> Root</p>
+                            <p class="mb-1"><span class="text-muted">Name: </span> John Doe</p>
+                        </div>
+                    </div>
+                    <div class="container m-3">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <ul class="list-group">
+                                    <li class="list-group-item active"><div class="float-left">Foglalás adatai </div><div class="float-right">#@Html.DisplayFor(x => x.InvoiceId)</div></li>
+                                    <li class="list-group-item">
+                                        <div class="float-left">Foglalás Dátuma: </div>
+                                        <div class="float-right">@Html.DisplayFor(model => model.ReservedAt)</div></li>
+                                    <li class="list-group-item">
+                                        <div class="float-left">Érkezés napja: </div>
+                                        <div class="float-right">@Html.DisplayFor(model => model.CheckIn)</div></li>
+                                    <li class="list-group-item">
+                                        <div class="float-left">Távozás napja: </div>
+                                        <div class="float-right">@Html.DisplayFor(x => x.Invoice.NumberOfNights)</div></li>
+                                    <li class="list-group-item">
+                                        <div class="float-left">Éjszakák száma: </div>
+                                        <div class="float-right">@Html.DisplayFor(x => x.Invoice.NumberOfNights)</div></li>
+                                    <li class="list-group-item">
+                                        <div class="float-left">Érkező vendégek száma: </div>
+                                        <div class="float-right">@Html.DisplayFor(model => model.NumberOfPeople)</div></li>
+                                    <li class="list-group-item">
+                                        <div class="float-left">Pótágyak száma: </div>
+                                        <div class="float-right">@Html.DisplayFor(x => x.Invoice.ExtraBed) DB</div></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if (Model.Invoice.DiscountPercent > 0)
+                    {
+                        <div class="d-flex flex-column flex-md-row-reverse bg-dark text-white p-4">
+                            <div class="py-3 px-5 text-center text-md-right text-success">
+                                <div class="mb-2">Fizetendő</div>
+                                <div class="h2 font-weight-light">@Html.DisplayFor(x => x.Invoice.RoomPriceWithDiscount) Ft</div>
+                            </div>
+                            <div class="py-3 px-5 text-center text-md-right">
+                                <div class="mb-2">Kedvezmény</div>
+                                <div class="h2 font-weight-light">@Html.DisplayFor(x => x.Invoice.DiscountPercent) %</div>
+                            </div>
+                            <div class="py-3 px-5 text-center text-md-right text-danger">
+                                <div class="mb-2"> Ár kedvezmény nélkül</div>
+                                <div class="h2 font-weight-light">@Html.DisplayFor(x => x.Invoice.RoomPriceWithoutDiscount) Ft</div>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+                            <div class="py-3 px-5 text-right">
+                                <div class="mb-2">Fizetendő</div>
+                                <div class="h2 font-weight-light">@Html.DisplayFor(x => x.Invoice.RoomPriceWithoutDiscount) Ft</div>
+                            </div>                            
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://totoprayogo.com">totoprayogo.com</a></div>
+</div>

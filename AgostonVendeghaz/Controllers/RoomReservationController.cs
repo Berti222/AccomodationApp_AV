@@ -64,7 +64,16 @@ namespace AgostonVendeghaz.Controllers
 
             _context.ReserveRooms.Add(reserved);
             _context.SaveChanges();
-            return View();
+
+            //List<ReservedRooms> reservedRoomsInDb = _context
+            //                                    .ReserveRooms
+            //                                    .Where(x => x.UserId == reserved.UserId)
+            //                                    .ToList();
+
+            //ReservedRooms reservedRoom = reservedRoomsInDb
+            //                            .SingleOrDefault(x => x.ReservedAt == reserved.ReservedAt);
+
+            return RedirectToAction("ShowInvoice", "RoomReservation", new { id = reserved.Id });            
         }
 
         private void SaveInvoice(ReservedRooms reserved)
@@ -72,6 +81,16 @@ namespace AgostonVendeghaz.Controllers
             var invoice = CalculateMethods.CalculateInvoice(reserved);
             _context.Invoices.Add(invoice);
             _context.SaveChanges();
+        }
+
+        [HttpGet]
+        public ActionResult ShowInvoice(int id)
+        {
+            var reservedRoomInDb = _context.ReserveRooms.SingleOrDefault(x => x.Id == id);
+
+            reservedRoomInDb.Invoice = _context.Invoices.SingleOrDefault(x => x.Id == reservedRoomInDb.InvoiceId);
+
+            return View(reservedRoomInDb);
         }
     }
 }
