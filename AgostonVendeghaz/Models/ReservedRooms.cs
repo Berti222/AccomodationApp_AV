@@ -41,7 +41,7 @@ namespace AgostonVendeghaz.Models
         [Required]
         [Display(Name ="Házszám")]
         [StringLength(50)]
-        [RegularExpression(@"^\d{1,4}[.\-/ ]?[A-Za-z .\-/:]*?$",
+        [RegularExpression(@"^\d{1,4}[.\-/ ]?[0-9a-zA-Z\u00C0-\u00FFűőŰŐ \-.:/]*?$",
             ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string HouseNumber { get; set; }
 
