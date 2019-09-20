@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Security;
 
 namespace AgostonVendeghaz.Controllers
 {
@@ -88,22 +87,15 @@ namespace AgostonVendeghaz.Controllers
         [HttpGet]
         public ActionResult ShowInvoice(int id)
         {
-
             if (!User.Identity.IsAuthenticated)
                 return HttpNotFound();
 
             var reservedRoomInDb = _context.ReserveRooms.SingleOrDefault(x => x.Id == id);
             reservedRoomInDb.Invoice = _context.Invoices.SingleOrDefault(x => x.Id == reservedRoomInDb.InvoiceId);
 
-            string[] userRole = Roles.GetRolesForUser(User.Identity.Name);
-            bool isAdmin = userRole.Contains(RoleName.Admin);
-
-            if (!isAdmin)
-            {
-                string userId = User.Identity.GetUserId();
-                if (reservedRoomInDb.UserId != userId)
-                    return HttpNotFound();
-            }            
+            string userId = User.Identity.GetUserId();
+            if (reservedRoomInDb.UserId != userId)
+                return HttpNotFound();
 
             return View(reservedRoomInDb);
         }
