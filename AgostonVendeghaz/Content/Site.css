@@ -4,29 +4,16 @@
 }
 
 .mainPictures {
-    max-height: 600px;
+    width: 100%;
 }
 
-.room-card{
-    background-color: antiquewhite;
-}
-#rooms-bg {
-    background-image: url("../img/bg/people-2593251_1920.jpg");
-    background-color: rgba(0, 0, 0, 0.5);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 0;
-    padding:60px 0;
+.sections{
+    min-height: 80vh;
+    margin-top: 50px;
 }
 
-footer{
-    background-color:silver;
-    padding:50px;
-    border-top: 1px solid black;
-}
-
-.field-validation-error{
+/*---------------   Validation    ----------------*/
+.field-validation-error {
     color: red;
 }
 
@@ -34,6 +21,52 @@ footer{
     border: 1px solid red;
 }
 
-input.valid{
+.reserve-room-form input.valid {
     border: 1px solid green;
 }
+
+/*-----------   RoomReservation    ----------------*/
+
+#rooms-bg {
+    background-image: linear-gradient(rgba(55, 55, 55, 0.61),rgba(55, 55, 55, 0.31)), url("../img/bg/people-2593251_1920.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+}
+
+.own-card {
+    display: inline-block;
+    border-color: ghostwhite;
+    height: 600px;
+    border-radius: 5px;
+    background-color: rgba(237, 237, 237, 0.78);
+    margin: 30px;
+}
+
+.own-card-body {
+    height: 300px;
+    padding: 30px;
+}
+
+
+/* -----------   Navbar    --------------*/
+
+nav {
+    box-shadow: 0 1px 4px #585858;
+    background-image: linear-gradient(to right , #01a4d9 , #00297d);
+}
+
+nav li {
+    margin-right: 20px;
+}
+
+
+/* -----------   footer     ----------*/
+
+footer {
+    color: whitesmoke;
+    background-color: rgb(27, 27, 27);
+    padding: 35px;
+}
+

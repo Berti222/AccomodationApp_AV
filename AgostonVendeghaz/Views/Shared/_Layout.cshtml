@@ -11,12 +11,11 @@
 </head>
 <body>
     @Html.Partial("_Header")
-    <br />
-    <br />
-    
-    @RenderBody()
-    
- 
+
+    <div class="sections">
+        @RenderBody()
+    </div>
+
     @Html.Partial("_Footer")
 
     @Scripts.Render("~/bundles/jquery")
