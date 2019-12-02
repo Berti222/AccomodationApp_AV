@@ -78,7 +78,8 @@ namespace AgostonVendeghaz.Controllers
 
         private void SaveInvoice(ReservedRooms reserved)
         {
-            var invoice = CalculateMethods.CalculateInvoice(reserved);
+            var calculateMethods = new CalculateMethods(reserved);
+            var invoice = calculateMethods.CalculateInvoice();
             _context.Invoices.Add(invoice);
             _context.SaveChanges();
         }

@@ -7,35 +7,44 @@ namespace AgostonVendeghaz.Models
 {
     public class CalculateMethods
     {
+        private ApplicationDbContext _context;
+        private ReservedRooms reserve;
+        private UnitPrices unitPrice;
+        private Invoice invoice;
 
-        public static Invoice CalculateInvoice(ReservedRooms reserve)
+
+        public CalculateMethods(ReservedRooms reserve)
         {
-            ApplicationDbContext _context = new ApplicationDbContext();
-            UnitPrices unitPrices = _context.UnitPrice.Where(x => x.Id == 1).SingleOrDefault();
+            _context = new ApplicationDbContext();
+            invoice = new Invoice();
+            this.reserve = reserve;
+            this.unitPrice = _context.UnitPrice.Where(x => x.Id == 1).SingleOrDefault();
+        }
 
-            Invoice invoice = new Invoice();
+        public Invoice CalculateInvoice()
+        {
 
             //nights            
-            invoice.NumberOfNights = CalculateMethods.Nights(reserve);
+            invoice.NumberOfNights = Nights();
             //extra bed
-            invoice.ExtraBed = CalculateMethods.ExtraBed(reserve);
+            invoice.ExtraBed = ExtraBed();
             //extra bed price            
-            invoice.ExtraBedPrice = CalculateMethods.ExtraBedPrice(reserve, unitPrices);
+            invoice.ExtraBedPrice = ExtraBedPrice();
             // RoomPrice Without Discount
-            invoice.RoomPriceWithoutDiscount = CalculateMethods.RoomPriceWithoutDiscount(reserve, unitPrices);
+            invoice.RoomPriceWithoutDiscount = RoomPriceWithoutDiscount();
             // RoomPrice With Discount
-            invoice.RoomPriceWithDiscount = CalculateMethods.RoomPriceWithDiscount(reserve, unitPrices);
+            invoice.RoomPriceWithDiscount = RoomPriceWithDiscount();
             // User Id
             invoice.UserId = reserve.UserId;
             // Reserved At
             invoice.ReservedAt = reserve.ReservedAt;
 
-            invoice.DiscountPercent = DiscountPercent(reserve,unitPrices);
+            invoice.DiscountPercent = DiscountPercent();
 
             return invoice;
         }
 
-        private static int Nights(ReservedRooms reserve)
+        private int Nights()
         {
             TimeSpan nightsSpan = reserve.CheckOut - reserve.CheckIn;
             int nights = nightsSpan.Days;
@@ -43,26 +52,26 @@ namespace AgostonVendeghaz.Models
             return nights;
         }
 
-        private static int ExtraBed(ReservedRooms reserve)
+        private int ExtraBed()
         {
             int extraBed = reserve.NumberOfPeople > 2 ? reserve.NumberOfPeople - 2 : 0;
             return extraBed;
         }
 
-        private static int ExtraBedPrice(ReservedRooms reserve, UnitPrices unitPrice)
+        private int ExtraBedPrice()
         {
-            int extraBed = CalculateMethods.ExtraBed(reserve);
+            int extraBed = ExtraBed();
            
             int result = extraBed * unitPrice.ExtraBedPrice;
             return result;
         }
 
-        private static int RoomPriceWithoutDiscount(ReservedRooms reserve, UnitPrices unitPrice)
+        private int RoomPriceWithoutDiscount()
         {
-            int nights = CalculateMethods.Nights(reserve);
+            int nights = Nights();
             int price = nights * unitPrice.RoomPrice;
 
-            int extraBedPricesFroOneNight = CalculateMethods.ExtraBedPrice(reserve, unitPrice);
+            int extraBedPricesFroOneNight = ExtraBedPrice();
             int extraBedPrices = extraBedPricesFroOneNight * nights;
 
             int result = price + extraBedPrices;
@@ -70,10 +79,10 @@ namespace AgostonVendeghaz.Models
             return result;
         }
 
-        private static int DiscountPrice(ReservedRooms reserve, UnitPrices unitPrice)
+        private int DiscountPrice()
         {
-            int nights = CalculateMethods.Nights(reserve);
-            int price = RoomPriceWithoutDiscount(reserve, unitPrice);
+            int nights = Nights();
+            int price = RoomPriceWithoutDiscount();
 
             double priceWithDiscountDouble = price * unitPrice.Discount;
             int priceWithDiscount = (int)Math.Round(priceWithDiscountDouble);           
@@ -84,17 +93,17 @@ namespace AgostonVendeghaz.Models
             return result;
         }
 
-        private static int RoomPriceWithDiscount(ReservedRooms reserve, UnitPrices unitPrice)
+        private int RoomPriceWithDiscount()
         {
-            int roomPriceWithoutDiscount = CalculateMethods.RoomPriceWithoutDiscount(reserve, unitPrice);
-            int discountPrice = CalculateMethods.DiscountPrice(reserve, unitPrice);
+            int roomPriceWithoutDiscount = RoomPriceWithoutDiscount();
+            int discountPrice = DiscountPrice();
 
             return roomPriceWithoutDiscount - discountPrice;
         }
 
-        private static int DiscountPercent(ReservedRooms reserve, UnitPrices unitPrice)
+        private int DiscountPercent()
         {
-            bool haveDiscount = CalculateMethods.Nights(reserve) >= unitPrice.DiscountFromDay;
+            bool haveDiscount = Nights() >= unitPrice.DiscountFromDay;
             int discount = (int)(unitPrice.Discount * 100);
             return haveDiscount ? discount : 0;
         }
