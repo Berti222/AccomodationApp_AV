@@ -195,6 +195,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RoomController.cs" />
     <Compile Include="Controllers\RoomReservationController.cs" />
+    <Compile Include="Controllers\UnitPricesController.cs" />
     <Compile Include="Dtos\RoomDto.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -263,6 +264,22 @@
     <Compile Include="Migrations\201909161810262_ReservedRoomsInvoice.Designer.cs">
       <DependentUpon>201909161810262_ReservedRoomsInvoice.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201912042109169_AddUnitPriceForeignKeyToRoomModel.cs" />
+    <Compile Include="Migrations\201912042109169_AddUnitPriceForeignKeyToRoomModel.Designer.cs">
+      <DependentUpon>201912042109169_AddUnitPriceForeignKeyToRoomModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912050619514_UnitPricesIdAsInteger.cs" />
+    <Compile Include="Migrations\201912050619514_UnitPricesIdAsInteger.Designer.cs">
+      <DependentUpon>201912050619514_UnitPricesIdAsInteger.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912050921019_AddUnitPriceForeignKeyToRoomModel1.cs" />
+    <Compile Include="Migrations\201912050921019_AddUnitPriceForeignKeyToRoomModel1.Designer.cs">
+      <DependentUpon>201912050921019_AddUnitPriceForeignKeyToRoomModel1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201912050932527_ReservedRoomsAddRoomForeignKey.cs" />
+    <Compile Include="Migrations\201912050932527_ReservedRoomsAddRoomForeignKey.Designer.cs">
+      <DependentUpon>201912050932527_ReservedRoomsAddRoomForeignKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalculateMethods.cs" />
@@ -270,6 +287,7 @@
     <Compile Include="Models\Invoice.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\CheckInDateTimeValidator.cs" />
+    <Compile Include="Models\NewRoomDTO.cs" />
     <Compile Include="Models\ReservedRooms.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\Room.cs" />
@@ -380,6 +398,8 @@
     <Content Include="Views\RoomReservation\Index.cshtml" />
     <Content Include="Views\RoomReservation\Reserving.cshtml" />
     <Content Include="Views\RoomReservation\ShowInvoice.cshtml" />
+    <Content Include="Views\UnitPrices\Index.cshtml" />
+    <Content Include="Views\UnitPrices\New.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -444,6 +464,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909161810262_ReservedRoomsInvoice.resx">
       <DependentUpon>201909161810262_ReservedRoomsInvoice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912042109169_AddUnitPriceForeignKeyToRoomModel.resx">
+      <DependentUpon>201912042109169_AddUnitPriceForeignKeyToRoomModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912050619514_UnitPricesIdAsInteger.resx">
+      <DependentUpon>201912050619514_UnitPricesIdAsInteger.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912050921019_AddUnitPriceForeignKeyToRoomModel1.resx">
+      <DependentUpon>201912050921019_AddUnitPriceForeignKeyToRoomModel1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201912050932527_ReservedRoomsAddRoomForeignKey.resx">
+      <DependentUpon>201912050932527_ReservedRoomsAddRoomForeignKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

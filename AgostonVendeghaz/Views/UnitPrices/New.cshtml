@@ -1,0 +1,40 @@
+﻿@model AgostonVendeghaz.Models.UnitPrices
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>New</h2>
+
+            @using (Html.BeginForm("Save", "UnitPrices"))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(u=> u.RoomPrice)
+                    @Html.TextBoxFor(u=> u.RoomPrice, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(u=> u.ExtraBedPrice)
+                    @Html.TextBoxFor(u=> u.ExtraBedPrice, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(u=> u.DiscountFromDay)
+                    @Html.TextBoxFor(u=> u.DiscountFromDay, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(u=>u.Discount)
+                    @Html.TextBoxFor(u=> u.Discount, new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(u=>u.TouristTaxPrice)
+                    @Html.TextBoxFor(u=> u.TouristTaxPrice, new { @class = "form-control" })
+                </div>
+                @Html.HiddenFor(u=> u.Id)
+                @Html.AntiForgeryToken();
+                <button type="submit" class="btn btn-primary">Save</button>
+            }
+        </div>
+    </div>
+</div>

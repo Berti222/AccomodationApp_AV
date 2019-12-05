@@ -1,0 +1,78 @@
+﻿@model IEnumerable<AgostonVendeghaz.Models.UnitPrices>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h2>Szobák</h2>
+
+            @Html.ActionLink("Új Egységár hozzáadása", "New", "UnitPrices", null, new { @class = "btn btn-primary" })
+
+            @foreach (var unitPrice in Model)
+            {
+                <h4>Room</h4>
+                <div>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Id)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => unitPrice.Id)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.RoomPrice)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => unitPrice.RoomPrice)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.ExtraBedPrice)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => unitPrice.ExtraBedPrice)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.DiscountFromDay)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => unitPrice.DiscountFromDay)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Discount)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => unitPrice.Discount)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.TouristTaxPrice)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => unitPrice.TouristTaxPrice)
+                        </dd>
+                    </dl>
+                </div>
+                <p>
+                    @Html.ActionLink("Edit", "Edit", "UnitPrices", new { id = unitPrice.Id }, new { @class = "btn btn-warning text-dark" }) |
+                    @Html.ActionLink("Delete", "Delete", "UnitPrices", new { id = unitPrice.Id }, new { @class = "btn btn-danger" })
+                </p>
+            }
+
+        </div>
+    </div>
+</div>

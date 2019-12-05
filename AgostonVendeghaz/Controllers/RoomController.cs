@@ -12,14 +12,20 @@ namespace AgostonVendeghaz.Controllers
     public class RoomController : Controller
     {
         public ApplicationDbContext _context;
+        private List<UnitPrices> unitPrices;
+
         public RoomController()
         {
             _context = new ApplicationDbContext();
+            unitPrices = _context.UnitPrice.ToList();
         }
+
         protected override void Dispose(bool disposing)
         {
             this._context.Dispose();
         }
+
+
         // GET: Room
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult Index()
@@ -32,7 +38,10 @@ namespace AgostonVendeghaz.Controllers
         public ActionResult New()
         {
             var room = new Room();
-            return View(room);
+
+            var newRoomDto = new NewRoomDTO(room,unitPrices);
+
+            return View(newRoomDto);
         }
 
         //POST
@@ -52,7 +61,8 @@ namespace AgostonVendeghaz.Controllers
                 roomInDb.Available = room.Available;                
                 roomInDb.Description = room.Description;                
                 roomInDb.GuestFittingInTheRoom = room.GuestFittingInTheRoom;                
-                roomInDb.Type = room.Type;                
+                roomInDb.Type = room.Type;
+                roomInDb.UnitPriceID = room.UnitPriceID;
             }
             _context.SaveChanges();
             return RedirectToAction("Index", "Room");
@@ -63,10 +73,12 @@ namespace AgostonVendeghaz.Controllers
         {
             var room = _context.Rooms.SingleOrDefault(r => r.Id == id);
 
+            var newRoomDto = new NewRoomDTO(room, unitPrices);
+
             if (room == null)
                 return HttpNotFound();
 
-            return View("New", room);
+            return View("New", newRoomDto);
         }
 
         [Authorize(Roles = RoleName.Admin)]

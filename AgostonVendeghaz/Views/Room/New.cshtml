@@ -1,4 +1,4 @@
-﻿@model AgostonVendeghaz.Models.Room
+﻿@model AgostonVendeghaz.Models.NewRoomDTO
 
 @{
     ViewBag.Title = "New";
@@ -13,24 +13,51 @@
             @using (Html.BeginForm("Save", "Room"))
             {
                 <div class="form-group">
-                    @Html.LabelFor(r => r.Type)
-                    @Html.TextBoxFor(r => r.Type, new { @class = "form-control" })
+                    @Html.LabelFor(r => r.Room.Type)
+                    @Html.TextBoxFor(r => r.Room.Type, new { @class = "form-control" })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.GuestFittingInTheRoom)
-                    @Html.TextBoxFor(r => r.GuestFittingInTheRoom, new { @class = "form-control" })
+                    @Html.LabelFor(r => r.Room.GuestFittingInTheRoom)
+                    @Html.TextBoxFor(r => r.Room.GuestFittingInTheRoom, new { @class = "form-control" })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.Available)
-                    @Html.TextBoxFor(r => r.Available, new { @class = "form-control" })
+                    @Html.LabelFor(r => r.Room.Available)
+                    @Html.TextBoxFor(r => r.Room.Available, new { @class = "form-control" })
                 </div>
                 <div class="form-group">
-                    @Html.LabelFor(r => r.Description)
-                    @Html.TextAreaFor(r => r.Description, new { @class = "form-control" })
+                    @Html.LabelFor(r => r.Room.Description)
+                    @Html.TextAreaFor(r => r.Room.Description, new { @class = "form-control" })
                 </div>
-                @Html.HiddenFor(r => r.Id)
+
+                foreach (var item in Model.UnitPrices)
+                {
+                    <div class="card border-primary mb-3 unitPriceCard" style="max-width: 18rem; display:inline-block;">
+                        <div class="card-header">Unit Price @item.Id @Html.RadioButtonFor(r => r.Room.UnitPriceID, item.Id, new { @class = "form-control" })</div>
+                        <div class="card-body text-primary">
+                            <p>
+                                Room price : @item.RoomPrice
+                            </p>
+                            <p>
+                                Extrabed price : @item.ExtraBedPrice
+                            </p>
+                            <p>
+                                Discount from day : @item.DiscountFromDay
+                            </p>
+                            <p>
+                                Discount : @item.Discount
+                            </p>
+                            <p>
+                                Tourist tax price price : @item.TouristTaxPrice
+                            </p>                           
+                        </div>
+                    </div>
+                }
+
+                @Html.HiddenFor(r => r.Room.Id)
                 @Html.AntiForgeryToken();
-                <button type="submit" class="btn btn-primary">Save</button>
+                <div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
             }
         </div>
     </div>

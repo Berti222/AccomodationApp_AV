@@ -18,7 +18,7 @@ namespace AgostonVendeghaz.Models
             _context = new ApplicationDbContext();
             invoice = new Invoice();
             this.reserve = reserve;
-            this.unitPrice = _context.UnitPrice.Where(x => x.Id == 1).SingleOrDefault();
+            this.unitPrice = reserve.Room.UnitPrice;
         }
 
         public Invoice CalculateInvoice()

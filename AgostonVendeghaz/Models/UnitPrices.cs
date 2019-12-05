@@ -7,7 +7,7 @@ namespace AgostonVendeghaz.Models
 {
     public class UnitPrices
     {
-        public byte Id { get; set; }
+        public int Id { get; set; }
 
         public int RoomPrice { get; set; }
         public int DiscountFromDay { get; set; }

@@ -58,6 +58,7 @@ namespace AgostonVendeghaz.Models
         public string Email { get; set; }
 
         public int RoomId { get; set; }
+        public Room Room { get; set; }
 
         public DateTime ReservedAt { get; set; }
 

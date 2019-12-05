@@ -33,7 +33,8 @@ namespace AgostonVendeghaz.Controllers
         {
             var reserving = new ReservedRooms()
             {
-                RoomId = id                                     
+                RoomId = id                        
+                             
             };
 
             return View(reserving);
@@ -44,6 +45,11 @@ namespace AgostonVendeghaz.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ReserveRoom(ReservedRooms reserved)
         {
+            //set room
+            reserved.Room = _context.Rooms.Where(r => r.Id == reserved.RoomId).SingleOrDefault();
+            // set UnitPrice
+            reserved.Room.UnitPrice = _context.UnitPrice.Where(u => u.Id == reserved.Room.UnitPriceID).SingleOrDefault();
+
             // Set DateTime - ReservedAt
             reserved.ReservedAt = DateTime.Now;
             // Set UserId

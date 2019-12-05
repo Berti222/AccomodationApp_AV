@@ -20,5 +20,8 @@ namespace AgostonVendeghaz.Models
         public int GuestFittingInTheRoom { get; set; }
 
         public int Available { get; set; }
+
+        public int? UnitPriceID { get; set; }
+        public UnitPrices UnitPrice { get; set; }
     }
 }
