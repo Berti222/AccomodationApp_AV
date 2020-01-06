@@ -7,9 +7,55 @@
     width: 100%;
 }
 
-.sections{
+.sections,
+section {
     min-height: 80vh;
     margin-top: 50px;
+}
+
+/*-----------------    Home page     -------------------*/
+
+.home-page {
+    background-image: linear-gradient(rgba(55, 55, 55, 0.20),rgba(55, 55, 55, 0.31)), url("../img/bg/hotel-picture.jpg");
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    width: 100%;
+    padding: 40px;
+}
+
+.h1-div {
+    text-align:center;
+}
+
+    .home-page h1 {
+        display: inline-block;
+        color: rgba(30, 30, 200, 0.78);
+        text-align: center;
+        padding: 20px;
+        border-radius: 50px;
+        background-color: rgba(255, 255, 200, 0.88);
+    }
+
+.home-page .row{
+    margin-top: 40vh;
+}
+
+.home-page .row div {
+    margin: 0 30px;
+    background-color: rgba(205, 205, 230, 0.78);
+    padding: 20px;
+    border-radius: 20px;
+    height: 250px;
+}
+
+.home-page .row div a{
+    text-decoration: none;
+    color: #001099;
+}
+.home-page .row div a:hover
+.home-page .row div a:active {
+    color: #0010ff;
 }
 
 /*---------------   Validation    ----------------*/
@@ -17,7 +63,7 @@
     color: red;
 }
 
-.input-validation-error{
+.input-validation-error {
     border: 1px solid red;
 }
 
@@ -54,12 +100,12 @@
 
 nav {
     box-shadow: 0 1px 4px #585858;
-    background-image: linear-gradient(to right , #01a4d9 , #00297d);
+    background-image: linear-gradient(to right, #01a4d9, #00297d);
 }
 
-nav li {
-    margin-right: 20px;
-}
+    nav li {
+        margin-right: 20px;
+    }
 
 
 /* -----------   footer     ----------*/
@@ -69,4 +115,3 @@ footer {
     background-color: rgb(27, 27, 27);
     padding: 35px;
 }
-

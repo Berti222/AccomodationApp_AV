@@ -305,6 +305,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="img\bg\hotel-picture.jpg" />
     <Content Include="img\bg\people-2593251_1920.jpg" />
     <Content Include="img\hotel-1979406_640.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -360,7 +361,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />

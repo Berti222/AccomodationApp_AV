@@ -1,45 +1,33 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<div class="carousel slide " data-ride="carousel">
-    <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/65050810_1129850770531709_1691528150330114048_n.jpg?_nc_cat=108&_nc_oc=AQm8gJ1n_w46rZ2mY7eW3Om_ffl2vTLMvXmotKGw0QK_CqQ9s0tH3sGQZ2ALLSx8zZI&_nc_ht=scontent-vie1-1.xx&oh=aa657866f1b472afca51e218200f6e33&oe=5E04A662"
-                 class="d-block w-100" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="https://scontent-vie1-1.xx.fbcdn.net/v/t1.0-9/69420192_1173448482838604_2141788658804457472_n.jpg?_nc_cat=100&_nc_oc=AQmDBumPaG2eCEXaK5RK7Ei_MER6MB2AdXaEiVNPHgG7vz_kdJOjUFxAy61-cAUCBzY&_nc_ht=scontent-vie1-1.xx&oh=46f5eee53e162be915d4453673930381&oe=5DF4A9E2"
-                 class="d-block w-100" alt="...">
-        </div>
-
+<section class="home-page">
+    <div class="h1-div">
+        <h1>Ágoston Vendégház</h1>
     </div>
-</div>
+    <div class="continer">
+        <div class="row">
+            <div class="col">
+                <h3>Rólunk</h3>
+                <p>Üdvözöljük Apartmaununk weboldalán. </p> 
+            </div>
+            <div class="col">
+                <h3>Elérhetőségek</h3>
+                <address>
+                    8784.<br />
+                    Kehidakustány, <br />
+                    Széchenyi István u. 75<br />
+                    <abbr title="Phone">Telefonszám:</abbr>
+                    +36 30 123 4567
+                </address>
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div id="rooms" class="row">
-    
-</div>
-
-@section scripts{
-    <script>
-    
-        let rooms = document.querySelector('#rooms');
-        rooms.innerHTML = `
-    <div class="col-md-4">
-        <h2>Szoba</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+                <address>
+                    <strong>Facebook:</strong>   <a href="https://www.facebook.com/agostonvendeghaz/" target="_blank">Ágoston Vendégház</a><br />
+                    <strong>E-mail:</strong> <a href="mailto:info@agostonvendeghaz.com">info@agostonvendeghaz.com</a>
+                </address>
+            </div>
+        </div>
     </div>
-    `;
-    </script>
-    
-}
+
+</section>
