@@ -281,6 +281,10 @@
     <Compile Include="Migrations\201912050932527_ReservedRoomsAddRoomForeignKey.Designer.cs">
       <DependentUpon>201912050932527_ReservedRoomsAddRoomForeignKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202001081906475_AddUserdataToApplicationUser.cs" />
+    <Compile Include="Migrations\202001081906475_AddUserdataToApplicationUser.Designer.cs">
+      <DependentUpon>202001081906475_AddUserdataToApplicationUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\CalculateMethods.cs" />
@@ -478,6 +482,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201912050932527_ReservedRoomsAddRoomForeignKey.resx">
       <DependentUpon>201912050932527_ReservedRoomsAddRoomForeignKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001081906475_AddUserdataToApplicationUser.resx">
+      <DependentUpon>202001081906475_AddUserdataToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

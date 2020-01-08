@@ -33,9 +33,24 @@ namespace AgostonVendeghaz.Controllers
         {
             var reserving = new ReservedRooms()
             {
-                RoomId = id                        
-                             
+                RoomId = id
             };
+
+            if (User.Identity.IsAuthenticated && !User.IsInRole(RoleName.Admin))
+            {
+                string userId = User.Identity.GetUserId();
+                var user = _context.Users.Where(u => u.Id == userId).SingleOrDefault();
+                if(user != null)
+                {
+                    reserving.Name = user.Name;
+                    reserving.ZipCode = user.ZipCode;
+                    reserving.City = user.City;
+                    reserving.Street = user.Street;
+                    reserving.HouseNumber = user.HouseNumber;
+                    reserving.PhoneNumber = user.PhoneNumber;
+                    reserving.Email = user.Email;
+                }
+            }
 
             return View(reserving);
         }
@@ -70,14 +85,6 @@ namespace AgostonVendeghaz.Controllers
 
             _context.ReserveRooms.Add(reserved);
             _context.SaveChanges();
-
-            //List<ReservedRooms> reservedRoomsInDb = _context
-            //                                    .ReserveRooms
-            //                                    .Where(x => x.UserId == reserved.UserId)
-            //                                    .ToList();
-
-            //ReservedRooms reservedRoom = reservedRoomsInDb
-            //                            .SingleOrDefault(x => x.ReservedAt == reserved.ReservedAt);
 
             return RedirectToAction("ShowInvoice", "RoomReservation", new { id = reserved.Id });            
         }

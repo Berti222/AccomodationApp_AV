@@ -152,7 +152,18 @@ namespace AgostonVendeghaz.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    Name = model.Name,
+                    ZipCode = model.ZipCode,
+                    City = model.City,
+                    Street = model.Street,
+                    HouseNumber = model.HouseNumber,
+                    PhoneNumber = model.PhoneNumber
+                };
+
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
