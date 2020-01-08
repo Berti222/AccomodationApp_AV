@@ -108,7 +108,7 @@ namespace AgostonVendeghaz.Controllers
             reservedRoomInDb.Invoice = _context.Invoices.SingleOrDefault(x => x.Id == reservedRoomInDb.InvoiceId);
 
             string userId = User.Identity.GetUserId();
-            if (reservedRoomInDb.UserId != userId)
+            if (reservedRoomInDb.UserId != userId && !User.IsInRole(RoleName.Admin))
                 return HttpNotFound();
 
             return View(reservedRoomInDb);
