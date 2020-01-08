@@ -1,0 +1,46 @@
+﻿@model IEnumerable<AgostonVendeghaz.Models.ReservedRooms>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<h2>Reservations</h2>
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>Reserved at</th>
+            <th>Arrive</th>
+            <th>Leave</th>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone number</th>
+            <th>Paying</th>
+            <th>Number of guests</th>
+            <th>Show Invoice</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {           
+            <tr table-row-id="@item.Id">
+                <td>@item.ReservedAt</td>
+                <td>@item.CheckIn</td>
+                <td>@item.CheckOut</td>
+                <td>@item.Name</td>
+                <td>
+                    <div>@item.ZipCode, @item.City</div>
+                    <div>@item.Street @item.HouseNumber</div>
+                </td>
+                <td>@item.PhoneNumber</td>
+                <td style="color:green;font-weight:700;">@item.Invoice.RoomPriceWithoutDiscount Ft</td>
+                <td style="text-align:center">@item.NumberOfPeople</td>
+                <td>@Html.ActionLink("Invoice", "ShowInvoice", "RoomReservation", new { id = item.Id }, new { @class = "btn btn-primary" })</td>
+                <td>@Html.ActionLink("Delete", "Delete", "Reservations", new { id = item.Id }, new { @class = "btn btn-danger" })</td>
+            </tr>
+        }
+    </tbody>
+</table>
