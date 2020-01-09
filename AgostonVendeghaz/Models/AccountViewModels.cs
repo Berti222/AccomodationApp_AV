@@ -113,12 +113,11 @@ namespace AgostonVendeghaz.Models
             ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string HouseNumber { get; set; }
 
-        //Phone
         [Required]
         [Display(Name = "Telefonszám")]
         [RegularExpression(@"^\+?\d{2}[\-. ]?\d{1,2}[\-. ]?\d{3}[\-. ]?\d{3,4}$",
             ErrorMessage = "Helytelen formátum kérem próbálja újra!")]
-        public string PhoneNumber { get; set; }
+        public string Phone { get; set; }
 
     }
 

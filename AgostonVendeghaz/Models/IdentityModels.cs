@@ -12,23 +12,42 @@ namespace AgostonVendeghaz.Models
     {
         [Required]
         [StringLength(255)]
+        [Display(Name = "Név")]
         public string Name { get; set; }
 
         [Required]
         [StringLength(5)]
+        [Display(Name = "Irányítószám")]
+        [RegularExpression(@"^[1-9]\d{3}[.]?$",
+            ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string ZipCode { get; set; }
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Város")]
+        [RegularExpression(@"^[a-zA-Z\u00C0-\u00FFűőŰŐ .\-]{2,}$",
+            ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string City { get; set; }
 
         [Required]
         [StringLength(255)]
+        [Display(Name = "Utca")]
+        [RegularExpression(@"^[a-zA-Z\u00C0-\u00FFűőŰŐ \-.]{2,}$",
+            ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string Street { get; set; }
 
         [Required]
         [StringLength(50)]
+        [Display(Name = "Házszám")]
+        [RegularExpression(@"^\d{1,4}[.\-/ ]?[0-9a-zA-Z\u00C0-\u00FFűőŰŐ \-.:/]*?$",
+            ErrorMessage = "Helytelen formátum! Kérem próbálja újra.")]
         public string HouseNumber { get; set; }
+
+        [Required]
+        [Display(Name = "Telefonszám")]
+        [RegularExpression(@"^\+?\d{2}[\-. ]?\d{1,2}[\-. ]?\d{3}[\-. ]?\d{3,4}$",
+        ErrorMessage = "Helytelen formátum kérem próbálja újra!")]
+        public string Phone { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

@@ -191,6 +191,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ChangeUserDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ReservationsController.cs" />
@@ -284,6 +285,10 @@
     <Compile Include="Migrations\202001081906475_AddUserdataToApplicationUser.cs" />
     <Compile Include="Migrations\202001081906475_AddUserdataToApplicationUser.Designer.cs">
       <DependentUpon>202001081906475_AddUserdataToApplicationUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202001091031038_AddedPhoneToApplicationUser.cs" />
+    <Compile Include="Migrations\202001091031038_AddedPhoneToApplicationUser.Designer.cs">
+      <DependentUpon>202001091031038_AddedPhoneToApplicationUser.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -406,6 +411,7 @@
     <Content Include="Views\UnitPrices\Index.cshtml" />
     <Content Include="Views\UnitPrices\New.cshtml" />
     <Content Include="Views\Reservations\Index.cshtml" />
+    <Content Include="Views\ChangeUserData\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -485,6 +491,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202001081906475_AddUserdataToApplicationUser.resx">
       <DependentUpon>202001081906475_AddUserdataToApplicationUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202001091031038_AddedPhoneToApplicationUser.resx">
+      <DependentUpon>202001091031038_AddedPhoneToApplicationUser.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

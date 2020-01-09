@@ -161,7 +161,7 @@ namespace AgostonVendeghaz.Controllers
                     City = model.City,
                     Street = model.Street,
                     HouseNumber = model.HouseNumber,
-                    PhoneNumber = model.PhoneNumber
+                    Phone = model.Phone
                 };
 
                 var result = await UserManager.CreateAsync(user, model.Password);

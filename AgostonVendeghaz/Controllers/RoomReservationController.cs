@@ -47,7 +47,7 @@ namespace AgostonVendeghaz.Controllers
                     reserving.City = user.City;
                     reserving.Street = user.Street;
                     reserving.HouseNumber = user.HouseNumber;
-                    reserving.PhoneNumber = user.PhoneNumber;
+                    reserving.PhoneNumber = user.Phone;
                     reserving.Email = user.Email;
                 }
             }

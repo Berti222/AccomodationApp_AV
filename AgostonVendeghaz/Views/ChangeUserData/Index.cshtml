@@ -1,0 +1,52 @@
+﻿@model AgostonVendeghaz.Models.ApplicationUser
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Felhasználó adatai</h2>
+
+@using (Html.BeginForm("Post", "ChangeUserData"))
+{
+    <div>
+        @Html.LabelFor(u => u.Name)
+        @Html.TextBoxFor(u => u.Name, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Name)
+    </div>
+    <div>
+        @Html.LabelFor(u => u.ZipCode)
+        @Html.TextBoxFor(u => u.ZipCode, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.ZipCode)
+    </div>
+    <div>
+        @Html.LabelFor(u => u.City)
+        @Html.TextBoxFor(u => u.City, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.City)
+    </div>
+    <div>
+        @Html.LabelFor(u => u.Street)
+        @Html.TextBoxFor(u => u.Street, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Street)
+    </div>
+    <div>
+        @Html.LabelFor(u => u.HouseNumber)
+        @Html.TextBoxFor(u => u.HouseNumber, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.HouseNumber)
+    </div>
+    <div>
+        @Html.LabelFor(u => u.Phone)
+        @Html.TextBoxFor(u => u.Phone, new { @class = "form-control" })
+        @Html.ValidationMessageFor(u => u.Phone)
+    </div>
+
+    @Html.HiddenFor(u => u.Id);
+    @Html.AntiForgeryToken();
+
+    <div>
+        <button type="submit" class="btn btn-primary">Adatok megváltoztatása</button>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

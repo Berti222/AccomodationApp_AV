@@ -265,3 +265,4 @@ C:\project_agostonVendeghaz\AccomodationApp_AV\AgostonVendeghaz\obj\Debug\Agosto
 C:\project_agostonVendeghaz\AccomodationApp_AV\AgostonVendeghaz\obj\Debug\AgostonVendeghaz.Migrations.AddUnitPriceForeignKeyToRoomModel1.resources
 C:\project_agostonVendeghaz\AccomodationApp_AV\AgostonVendeghaz\obj\Debug\AgostonVendeghaz.Migrations.ReservedRoomsAddRoomForeignKey.resources
 C:\project_agostonVendeghaz\AccomodationApp_AV\AgostonVendeghaz\obj\Debug\AgostonVendeghaz.Migrations.AddUserdataToApplicationUser.resources
+C:\project_agostonVendeghaz\AccomodationApp_AV\AgostonVendeghaz\obj\Debug\AgostonVendeghaz.Migrations.AddedPhoneToApplicationUser.resources
